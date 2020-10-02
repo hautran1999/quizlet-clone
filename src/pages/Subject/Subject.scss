@@ -1,0 +1,28 @@
+.subject-container {
+  margin: 24px 0;
+  .subject-header {
+    height: 6.875rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .subject-header-title {
+      font-weight: bold;
+      color: #1a1d28;
+    }
+  }
+  .subject-content {
+    margin-top: 48px;
+    .subject-content-item {
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .subject-content-title {
+        font-weight: bold;
+        color: #1a1d28;
+        margin-bottom: 24px;
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+.create-container {
+    margin: 24px 0;
+    .create-header,
+    .create-header-content {
+      height: 6.875rem;
+      display: flex;
+      position: relative;
+    }
+    .create-header {
+      align-items: center;
+      .create-header-title {
+        font-weight: bold;
+        flex-grow: 1;
+      }
+      .create-header-button {
+        width: 150px;
+        background-color: #3ccfcf;
+        color: white;
+        font-weight: bold;
+        text-transform: none;
+      }
+    }
+    .create-header-content {
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    .create-flashcard {
+      margin: 24px 0;
+      .create-flashcard-header,
+      .create-flashcard-content {
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .create-flashcard-header {
+        position: relative;
+        align-items: center;
+      }
+      .create-flashcard-content {
+        .create-flashcard-input {
+          width: 47.5%;
+        }
+      }
+    }
+    .create-add-flashcard {
+      margin: 24px 0;
+      height: 6.875rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .create-add-flashcard-button {
+        text-transform: none !important;
+        border-bottom: 0.3125rem solid #3ccfcf;
+      }
+    }
+  }
+  

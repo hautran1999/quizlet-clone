@@ -1,0 +1,20 @@
+.search-container {
+  margin: 24px 0;
+  .search-header-container {
+    .search-header-header-main {
+      height: 6.875rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .search-header-title {
+        font-weight: bold;
+      }
+    }
+  }
+  .search-content-container {
+    .search-content-filter {
+    }
+    .search-content-main {
+    }
+  }
+}
