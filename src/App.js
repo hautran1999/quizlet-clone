@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import Layout from "./layouts";
+import { BrowserRouter } from "react-router-dom";
+import Routers from "./routers";
 function App() {
   return (
-    <Router>
-      <Layout />
-    </Router>
+    <BrowserRouter>
+      <Routers />
+    </BrowserRouter>
   );
 }
 

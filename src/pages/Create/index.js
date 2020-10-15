@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  Container,
+  Grid,
   Typography,
   Button,
   TextField,
@@ -8,9 +8,9 @@ import {
   Divider,
 } from "@material-ui/core";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
-import "./CreateFlashcards.scss";
+import "./Create.scss";
 
-const CreateFlashcards = () => {
+const Create = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [listFlashcard, setListFlashcard] = useState([]);
@@ -40,23 +40,23 @@ const CreateFlashcards = () => {
   useEffect(() => {}, []);
 
   return (
-    <Container fixed className="create-container">
-      <div className="create-header">
+    <Grid className="create-container">
+      <Grid className="create-header">
         <Typography variant="h6" className="create-header-title">
           Tạo học phần mới
         </Typography>
         <Button variant="contained" className="create-header-button">
           Tạo
         </Button>
-      </div>
-      <div className="create-header-content">
+      </Grid>
+      <Grid className="create-header-content">
         <TextField value={title} onChange={handleChangeTitle} label="Tiêu đề" />
         <TextField
           value={description}
           onChange={handleChangeDescription}
           label="Mô tả"
         />
-      </div>
+      </Grid>
       {listFlashcard.map((flashcard, key) => {
         return (
           <Paper key={key} elevation={3} className="create-flashcard">
@@ -90,8 +90,8 @@ const CreateFlashcards = () => {
           <Typography variant="h5">+ Thêm thẻ</Typography>
         </Button>
       </Paper>
-    </Container>
+    </Grid>
   );
 };
 
-export default CreateFlashcards;
+export default Create;

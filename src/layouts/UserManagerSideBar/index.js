@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Grid,
   Divider,
   List,
   ListItem,
@@ -14,11 +15,11 @@ import FilterNoneOutlinedIcon from "@material-ui/icons/FilterNoneOutlined";
 import FolderOutlinedIcon from "@material-ui/icons/FolderOutlined";
 import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
 
-import "./SideBar.scss";
+import "./UserManagerSideBar.scss";
 
-const SideBar = () => {
+const UserManagerSideBar = () => {
   return (
-    <div>
+    <Grid>
       <List>
         <ListItem button key="home" selected={true}>
           <ListItemIcon>
@@ -66,8 +67,8 @@ const SideBar = () => {
           <ListItemText primary="Lớp học" />
         </ListItem>
       </List>
-    </div>
+    </Grid>
   );
 };
 
-export default SideBar;
+export default UserManagerSideBar;

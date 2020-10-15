@@ -1,0 +1,33 @@
+.search-result-container {
+  .search-result-header-container {
+    .search-result-header-main {
+      height: 6.875rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .search-result-header-title {
+        font-weight: bold;
+      }
+    }
+  }
+  .search-result-content-container {
+    .search-result-content-filter {
+    }
+    .search-result-content-main {
+      .list-header {
+        font-weight: bold;
+      }
+      .item-container {
+        margin: 24px 0;
+        .item-info-container {
+        }
+        .item-demo-container {
+          padding: 8px 16px;
+        }
+      }
+      .item-container:hover {
+        border-bottom: 0.3125rem solid #3ccfcf;
+      }
+    }
+  }
+}

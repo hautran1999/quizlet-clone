@@ -26,11 +26,11 @@ const Header = () => {
             Quizlet
           </Typography>
           <div style={{ flexGrow: 1 }} />
-          <Button>
+          <Button component={Link} to="/search">
             <SearchOutlinedIcon />
             Tìm kiếm
           </Button>
-          <Button component={Link} to="/create-flashcards">
+          <Button component={Link} to="/create">
             <NoteAddOutlinedIcon />
             Tạo
           </Button>
