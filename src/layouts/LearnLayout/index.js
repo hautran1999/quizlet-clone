@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import LearnSideBar from "../LearnSideBar";
 const LearnLayout = (props) => {
+  const query = new URLSearchParams(window.location.search).get("id");
   return (
     <Grid>
       <Grid
@@ -19,7 +20,7 @@ const LearnLayout = (props) => {
       </Grid>
       <Grid container spacing={3}>
         <Grid item md={3}>
-          <LearnSideBar />
+          <LearnSideBar query={query} />
         </Grid>
         <Grid item md={9}>
           {props.children}

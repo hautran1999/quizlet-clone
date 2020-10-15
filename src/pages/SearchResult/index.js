@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Typography,
   Grid,
@@ -14,13 +15,20 @@ import ImageIcon from "@material-ui/icons/Image";
 import "./SearchResult.scss";
 
 const SearchResult = () => {
-  const searchContent = new URLSearchParams(window.location.search).get("search");
+  const history = useHistory();
+  const searchContent = new URLSearchParams(window.location.search).get(
+    "search"
+  );
   const [list, setList] = useState([]);
-
+  const handleClick = (id) => {
+    const query = new URLSearchParams({ id: id }).toString();
+    history.push("/show?" + query);
+  };
   useEffect(() => {
     let data = [];
     for (let i = 0; i < 25; i++) {
       data.push({
+        id: i,
         user: "Asimo " + i,
         title: "Lịch sử " + i,
         terms: i,
@@ -52,7 +60,12 @@ const SearchResult = () => {
           <List>
             {list.map((item, key) => {
               return (
-                <Paper elevation={3} key={key} className="item-container">
+                <Paper
+                  elevation={3}
+                  key={key}
+                  className="item-container"
+                  onClick={() => handleClick(item.id)}
+                >
                   <div className="item-info-container">
                     <ListItem>
                       <ListItemAvatar>
