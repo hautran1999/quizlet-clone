@@ -30,6 +30,11 @@ const Game = () => {
     setData(newData);
   };
 
+  const handlePlayAgain = async () => {
+    setLoading(true);
+    setScore(0);
+    await initGame();
+  };
   const changeColor = (status) => {
     switch (status) {
       case "select":
