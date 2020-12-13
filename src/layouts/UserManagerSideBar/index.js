@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   Grid,
   Divider,
@@ -10,61 +11,66 @@ import {
 
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import AssessmentOutlinedIcon from "@material-ui/icons/AssessmentOutlined";
-import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import FilterNoneOutlinedIcon from "@material-ui/icons/FilterNoneOutlined";
-import FolderOutlinedIcon from "@material-ui/icons/FolderOutlined";
-import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
-
 import "./UserManagerSideBar.scss";
 
 const UserManagerSideBar = () => {
+  const [selected, setSelected] = useState("");
+  const selectedItem = (key) => {
+    return selected === key;
+  };
+  useEffect(() => {
+    ["home", "progress", "term"].map(
+      (key) => window.location.href.includes(key) && setSelected(key)
+    );
+  }, []);
   return (
     <Grid>
       <List>
-        <ListItem button key="home" selected={true}>
+        <ListItem
+          button
+          key="home"
+          selected={selectedItem("home")}
+          onClick={() => setSelected("home")}
+          component={Link}
+          to="/home"
+        >
           <ListItemIcon>
             <HomeOutlinedIcon />
           </ListItemIcon>
           <ListItemText primary="Trang chủ" />
         </ListItem>
 
-        <ListItem button key="progress">
+        <ListItem
+          button
+          key="progress"
+          selected={selectedItem("progress")}
+          onClick={() => setSelected("progress")}
+          component={Link}
+          to="/progress"
+        >
           <ListItemIcon>
             <AssessmentOutlinedIcon />
           </ListItemIcon>
           <ListItemText primary="Tiến độ" />
-        </ListItem>
-
-        <ListItem button key="setting">
-          <ListItemIcon>
-            <SettingsOutlinedIcon />
-          </ListItemIcon>
-          <ListItemText primary="Cài đặt" />
         </ListItem>
       </List>
 
       <Divider />
 
       <List>
-        <ListItem button key="term">
+        <ListItem
+          button
+          key="term"
+          selected={selectedItem("term")}
+          onClick={() => setSelected("term")}
+          component={Link}
+          to="/term"
+        >
           <ListItemIcon>
             <FilterNoneOutlinedIcon />
           </ListItemIcon>
           <ListItemText primary="Học phần" />
-        </ListItem>
-
-        <ListItem button key="folder">
-          <ListItemIcon>
-            <FolderOutlinedIcon />
-          </ListItemIcon>
-          <ListItemText primary="Thư mục" />
-        </ListItem>
-
-        <ListItem button key="class">
-          <ListItemIcon>
-            <PeopleAltOutlinedIcon />
-          </ListItemIcon>
-          <ListItemText primary="Lớp học" />
         </ListItem>
       </List>
     </Grid>

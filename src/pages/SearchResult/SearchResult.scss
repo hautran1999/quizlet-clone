@@ -11,10 +11,11 @@
     }
   }
   .search-result-content-container {
-    .search-result-content-filter {
-    }
     .search-result-content-main {
       .list-header {
+        font-weight: bold;
+      }
+      .list-header-error {
         font-weight: bold;
       }
       .item-container {
