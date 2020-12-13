@@ -114,6 +114,23 @@ const Study = () => {
     return array;
   };
 
+  const handleCheckAnswer = async (index) => {
+    if (quest[presentQuest].right === index) {
+      let newLearned = learned;
+      let newStudied = studied;
+      if (studied.indexOf(presentQuest) === -1) {
+        newStudied.push(presentQuest);
+        newLearned[findData(newLearned)].studied = newStudied;
+        await updateUser(currentUser.uid, { learned: newLearned });
+        setStudied(newStudied);
+      }
+      setPresentQuest(presentQuest + 1);
+    } else {
+      setMyAns(index);
+      setOpen(!open);
+    }
+  };
+
   useEffect(() => {
     initQuest();
   }, []);
