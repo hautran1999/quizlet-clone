@@ -85,6 +85,12 @@ const Exam = () => {
     return array;
   };
 
+  const handleCheckAnswer = (index) => {
+    let newMyAns = [...myAns];
+    newMyAns[presentQuest] = index;
+    setMyAns(newMyAns);
+  };
+
   const displayTimeLeft = (seconds) => {
     let minutesLeft = Math.floor(seconds / 60);
     let secondsLeft = seconds % 60;
