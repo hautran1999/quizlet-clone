@@ -118,7 +118,62 @@ const WatchedTab = ({ hiddenFlashcard, watched }) => (
     ))}
   </div>
 );
-
+const CreatedTab = ({ deleteFlashcard, created, currentUser }) => (
+  <div style={{ margin: "0.5vw 0" }}>
+    {created.map((i, index) => (
+      <Paper key={index} style={{ padding: "1vw", margin: "1vw 0" }}>
+        <div>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+                <ImageIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText
+              primary={i.title}
+              secondary={currentUser.displayName}
+            />
+          </ListItem>
+        </div>
+        <Divider />
+        <div style={{ margin: "0.5vw 0" }}>
+          <Typography variant="body2">Thuật ngữ: {i.total}</Typography>
+          <Typography variant="body2">Giới thiệu: {i.description}</Typography>
+        </div>
+        <Divider />
+        <div style={{ textAlign: "center" }}>
+          <Button
+            onClick={() => deleteFlashcard(i.id)}
+            aria-label="delete"
+            style={{
+              margin: 4,
+              textTransform: "none",
+              fontWeight: "bold",
+              color: "#bdbdbd",
+            }}
+          >
+            <DeleteIcon style={{ marginRight: 4 }} />
+            Xóa học phần
+          </Button>
+          <Button
+            component={Link}
+            to={`/edit?id=${i.id}`}
+            aria-label="edit"
+            style={{
+              margin: 4,
+              textTransform: "none",
+              fontWeight: "bold",
+              color: "#bdbdbd",
+            }}
+          >
+            <EditIcon style={{ marginRight: 4 }} />
+            Sửa học phần
+          </Button>
+        </div>
+      </Paper>
+    ))}
+  </div>
+);
 
 const Term = () => {
   const tabNow = new URLSearchParams(window.location.search).get("tab");
