@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Progress as _Progress } from "react-sweet-progress";
 import { Link } from "react-router-dom";
 import * as _ from "lodash";
 import { Grid, Paper, Button, CircularProgress } from "@material-ui/core";
@@ -40,6 +41,11 @@ const Progress = () => {
                       justifyContent: "center",
                     }}
                   >
+                    <_Progress
+                      type="circle"
+                      width={100}
+                      percent={Math.round((i.studied.length * 100) / i.total)}
+                    />
                   </Grid>
                   <Grid item md={9}>
                     <div className="NextActionBase-textWrapper">
