@@ -66,7 +66,58 @@ const LearnedTab = ({ learned }) => (
     ))}
   </div>
 );
-
+const WatchedTab = ({ hiddenFlashcard, watched }) => (
+  <div style={{ margin: "0.5vw 0" }}>
+    {watched.map((i, index) => (
+      <Paper key={index} style={{ padding: "1vw", margin: "1vw 0" }}>
+        <div>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+                <ImageIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary={i.title} secondary={i.author.displayName} />
+          </ListItem>
+        </div>
+        <Divider />
+        <div style={{ margin: "0.5vw 0" }}>
+          <Typography variant="body2">Thuật ngữ: {i.total}</Typography>
+          <Typography variant="body2">Giới thiệu: {i.description}</Typography>
+        </div>
+        <Divider />
+        <div style={{ textAlign: "center" }}>
+          <Button
+            component={Link}
+            to={`/show?id=${i.id}`}
+            aria-label="learn"
+            style={{
+              margin: 4,
+              textTransform: "none",
+              fontWeight: "bold",
+              color: "#bdbdbd",
+            }}
+          >
+            <ImportContactsIcon style={{ marginRight: 4 }} />
+            Học
+          </Button>
+          <Button
+            onClick={() => hiddenFlashcard(i.id)}
+            aria-label="hidden"
+            style={{
+              margin: 4,
+              textTransform: "none",
+              fontWeight: "bold",
+              color: "#bdbdbd",
+            }}
+          >
+            <CloseIcon /> Ẩn học phần
+          </Button>
+        </div>
+      </Paper>
+    ))}
+  </div>
+);
 
 
 const Term = () => {
