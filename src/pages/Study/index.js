@@ -167,6 +167,24 @@ const Study = () => {
           </div>
         </Paper>
       ) : presentQuest === quest.length ? (
+        <Paper
+          style={{
+            marginTop: "2.5vw",
+            display: "flex",
+            height: "60vh",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ textAlign: "center" }}>
+            <Typography
+              variant="h5"
+              style={{ fontWeight: "bold", margin: "1vw" }}
+            >
+              Chúc mừng bạn đã học xong bộ thẻ này.
+            </Typography>
+          </div>
+        </Paper>
       ) : (
         <Grid container className="study">
           <Grid item sm={2}>
