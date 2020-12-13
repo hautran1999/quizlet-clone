@@ -40,7 +40,20 @@ const Term = () => {
     return tabNumber === tab ? "#ffcd1f" : "#fff";
   };
 
- 
+  const getData = async () => {
+    try {
+      const data = await getUserByUid(currentUser.uid);
+      setUser(data);
+    } catch (error) {
+      console(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const hiddenFlashcard = async (id) => {
     setLoading(true);
