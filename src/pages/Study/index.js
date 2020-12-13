@@ -148,6 +148,24 @@ const Study = () => {
           <CircularProgress />
         </div>
       ) : isError ? (
+        <Paper
+          style={{
+            marginTop: "2.5vw",
+            display: "flex",
+            height: "60vh",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ textAlign: "center" }}>
+            <Typography
+              variant="h5"
+              style={{ fontWeight: "bold", margin: "1vw" }}
+            >
+              Không tìm thấy bộ thẻ
+            </Typography>
+          </div>
+        </Paper>
       ) : presentQuest === quest.length ? (
       ) : (
         <Grid container className="study">
