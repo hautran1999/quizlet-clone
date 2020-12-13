@@ -71,6 +71,69 @@ const Home = () => {
         </div>
       ) : (
         <div style={{ margin: ".5vw" }}>
+          
+          
+          {!_.isEmpty(created) && (
+            <div>
+              <div style={{ display: "flex" }}>
+                <h5
+                  style={{
+                    fontSize: "1rem",
+                    letterSpacing: "normal",
+                    lineHeight: 1.5,
+                    flexGrow: 1,
+                  }}
+                >
+                  Đã tạo
+                </h5>
+                <h5
+                  onClick={() => seeAll(2)}
+                  style={{
+                    fontSize: "1rem",
+                    letterSpacing: "normal",
+                    lineHeight: 1.5,
+                    color: "#3ccfcf",
+                    cursor: "pointer",
+                  }}
+                >
+                  Xem tất cả
+                </h5>
+              </div>
+              <Grid container spacing={1}>
+                {created
+                  .slice(0, created.length < 2 ? created.length : 2)
+                  .reverse()
+                  .map((i, index) => (
+                    <Grid key={index} item md={6}>
+                      <Paper
+                        onClick={() => history.push(`/show?id=${i.id}`)}
+                        style={{ padding: "1vw" }}
+                      >
+                        <div>
+                          <ListItem>
+                            <ListItemAvatar>
+                              <Avatar>
+                                <ImageIcon />
+                              </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText
+                              primary={i.title}
+                              secondary={currentUser.displayName}
+                            />
+                          </ListItem>
+                        </div>
+                        <Divider />
+                        <div className="item-demo-container">
+                          <Typography variant="body2">
+                            Thuật ngữ: {i.total}
+                          </Typography>
+                        </div>
+                      </Paper>
+                    </Grid>
+                  ))}
+              </Grid>
+            </div>
+          )}
         </div>
       )}
     </div>
