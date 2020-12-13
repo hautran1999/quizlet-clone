@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import Progress from "../pages/Progress";
 import Term from "../pages/Term";
 import Create from "../pages/Create";
+import Edit from "../pages/Edit";
 import Search from "../pages/Search";
 import SearchResult from "../pages/SearchResult";
 import Show from "../pages/Show";
@@ -35,6 +36,7 @@ const Routers = () => {
             />
             <PrivateRoute path="/study" exact component={Study} />
             <PrivateRoute path="/exam" exact component={Exam} />
+            <PrivateRoute path="/edit" exact component={Edit} />
             <PrivateRoute path={["/home", "/progress", "/term"]}>
               <UserManagerLayout>
                 <Switch>
