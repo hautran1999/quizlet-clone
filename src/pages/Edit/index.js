@@ -103,6 +103,9 @@ const Edit = () => {
         </div>
       ) : isError ? (
         <Grid style={{ textAlign: "center", margin: "2.5vw 0vw" }}>
+          <Typography variant="h4" style={{ fontWeight: "bold" }}>
+            Rất tiếc, Bạn không được phép sửa bộ thẻ này !
+          </Typography>
         </Grid>
       ) : (
         <Grid className="edit-container">
