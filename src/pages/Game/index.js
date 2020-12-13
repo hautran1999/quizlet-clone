@@ -146,6 +146,15 @@ const Game = () => {
             >
               Không tìm thấy bộ thẻ
             </Typography>
+            <br />
+            <Button
+              onClick={handlePlayAgain}
+              variant="contained"
+              color="primary"
+              style={{ textTransform: "none", fontWeight: "bold" }}
+            >
+              Chơi lại
+            </Button>
           </div>
         </Paper>
       ) : score === data.length / 2 ? (
