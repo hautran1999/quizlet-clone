@@ -45,7 +45,13 @@ const Create = () => {
   };
 
   const handleCreateFlashcards = async () => {
-
+    if (!title) {
+      alert("Tên của bộ thẻ không được để trống!");
+    } else if (!description) {
+      alert("Mô tả về bộ thẻ không được để trống!");
+    } else if (_.isEmpty(listFlashcard)) {
+      alert("Bộ thẻ không được để trống!");
+    } else {
       const flashcard = {
         id: uuid(),
         uid: currentUser.uid,
@@ -67,6 +73,7 @@ const Create = () => {
       } catch (error) {
         console.log(error);
       }
+    }
   };
 
   return (
