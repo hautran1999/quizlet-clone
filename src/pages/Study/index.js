@@ -31,6 +31,92 @@ const Study = () => {
   const [open, setOpen] = useState(false);
   const { currentUser } = useAuthentication();
   const [learned, setLearned] = useState([]);
+  const user = {
+    uid: currentUser.uid,
+    displayName: currentUser.displayName,
+    email: currentUser.email,
+    phoneNumber: currentUser.phoneNumber,
+    photoURL: currentUser.photoURL,
+  };
+  const id = new URLSearchParams(window.location.search).get("id");
+  const findData = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].id === id) return i;
+    }
+    return -1;
+  };
+  const initQuest = async () => {
+    try {
+      const data = await getFlashcardById(id, user);
+      const userData = await getUserByUid(currentUser.uid);
+      const cards = [...data.cards];
+      let newQuest = [];
+      const index = findData(userData.learned);
+      if (index === -1) {
+        const newLearned = [
+          ...userData.learned,
+          {
+            id: data.id,
+            title: data.title,
+            description: data.description,
+            total: data.cards.length,
+            studied: [],
+            author: data.author,
+          },
+        ];
+        await updateUser(currentUser.uid, {
+          learned: newLearned,
+        });
+        setLearned(newLearned);
+      } else {
+        setStudied(userData.learned[index].studied);
+        setLearned(userData.learned);
+      }
+      for (let i = 0; i < cards.length; i++) {
+        const answers = createAnswers([...cards], i);
+        newQuest.push({
+          question: cards[i].vocabulary,
+          answers: answers,
+          right: answers.indexOf(cards[i].meaning),
+        });
+      }
+      setQuest(newQuest);
+    } catch {
+      setIsError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const createAnswers = (array, index) => {
+    let ans = [];
+    ans.push(array[index].meaning);
+    array.splice(index, 1);
+    for (let i = 0; i < (array.length < 3 ? array.length : 3); i++) {
+      const rand = Math.floor(Math.random() * array.length);
+      ans.push(array[rand].meaning);
+      array.splice(rand, 1);
+    }
+    return shuffle(ans);
+  };
+
+  const shuffle = (array) => {
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  };
+
+  useEffect(() => {
+    initQuest();
+  }, []);
 
   return (
     <div>
