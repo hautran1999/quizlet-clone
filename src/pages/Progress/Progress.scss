@@ -1,0 +1,71 @@
+.ProgressMeter {
+  width: 75%;
+  padding: 0.25rem;
+}
+.ProgressMeter-background {
+  stroke: #939bb4;
+  z-index: 101;
+}
+.ProgressMeter-foreground {
+  stroke: #3b4c9b;
+  z-index: 201;
+}
+.ProgressMeter-background,
+.ProgressMeter-foreground {
+  stroke-dasharray: 628.3185307179587;
+  stroke-dashoffset: 1256.6370614359173;
+}
+.ie11 .ProgressMeter-background,
+.ie11 .ProgressMeter-foreground,
+.ie .ProgressMeter-background,
+.ie .ProgressMeter-foreground {
+  stroke-dasharray: 0;
+  stroke-dashoffset: 0;
+  -webkit-animation: none;
+  -moz-animation: none;
+  -ms-animation: none;
+  animation: none;
+}
+.ProgressMeter-percent {
+  fill: #3b4c9b;
+  font: 600 45px/1 hurme_no2-webfont, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  letter-spacing: -0.05em;
+}
+.NextActionBase-header {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: normal;
+  line-height: 1.333333333333333;
+}
+.NextActionBase-textWrapper {
+  -webkit-flex: 1.5;
+  -ms-flex: 1.5;
+  flex: 1.5;
+  .UIButton {
+    font-weight: 600;
+    letter-spacing: 0.025rem;
+    margin-top: 1rem;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    line-height: 1.375;
+    white-space: nowrap;
+    text-transform: none !important;
+    margin-top: 1.5rem !important;
+  }
+}
+.NextActionBase-subheader {
+  margin-top: 0.5rem;
+}
+.UIButton-wrapper {
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  white-space: pre-wrap;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+}
