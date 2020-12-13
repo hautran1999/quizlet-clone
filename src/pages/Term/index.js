@@ -39,7 +39,30 @@ const Term = () => {
   const changeBackgroundColor = (tabNumber) => {
     return tabNumber === tab ? "#ffcd1f" : "#fff";
   };
+  const getTab = () => {
+    switch (tab) {
+      case 1:
+        return (
+          <WatchedTab
+            hiddenFlashcard={hiddenFlashcard}
+            watched={user.watched}
+          />
+        );
 
+      case 2:
+        return (
+          <CreatedTab
+            deleteFlashcard={deleteFlashcard}
+            created={user.created}
+            currentUser={currentUser}
+          />
+        );
+      case 3:
+        return <LearnedTab learned={user.learned} />;
+      default:
+        break;
+    }
+  };
   const getData = async () => {
     try {
       const data = await getUserByUid(currentUser.uid);
