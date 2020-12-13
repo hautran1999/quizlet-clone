@@ -1,0 +1,21 @@
+.landing-container {
+  width: 100vh;
+  background-color: #24478f;
+  height: 100vh;
+
+  .landing-button {
+    margin: 5vw;
+    border-radius: 0.25rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    height: 4.25rem;
+    letter-spacing: 0.0375rem;
+    line-height: 4.25rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    position: relative;
+    text-transform: none;
+    background-color: #3ccfcf;
+    color: white;
+  }
+}
