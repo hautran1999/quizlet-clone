@@ -115,6 +115,23 @@ const Exam = () => {
     initQuest();
   };
 
+  useEffect(() => {
+    initQuest();
+  }, []);
+
+  useEffect(() => {
+    if (timeLeft === -1) {
+      return;
+    } else if (timeLeft === 0) {
+      submit();
+    } else {
+      const intervalId = setInterval(() => {
+        setTimeLeft(timeLeft - 1);
+      }, 1000);
+      return () => clearInterval(intervalId);
+    }
+  }, [timeLeft]);
+
   return (
     <div>
       {loading ? (
