@@ -164,6 +164,33 @@ const Exam = () => {
           </div>
         </Paper>
       ) : score !== -1 ? (
+        <Paper
+          style={{
+            marginTop: "2.5vw",
+            display: "flex",
+            height: "60vh",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ textAlign: "center" }}>
+            <Typography
+              variant="h1"
+              style={{ fontWeight: "bold", margin: "1vw" }}
+            >
+              {score}
+            </Typography>
+            <br />
+            <Button
+              onClick={handleExamAgain}
+              variant="contained"
+              color="primary"
+              style={{ textTransform: "none", fontWeight: "bold" }}
+            >
+              Làm lại bài kiểm tra
+            </Button>
+          </div>
+        </Paper>
       ) : (
         <Grid container className="exam">
           <Grid item md={2}>
