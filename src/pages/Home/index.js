@@ -27,6 +27,36 @@ const Home = () => {
   const [recently, setRecently] = useState({});
   const [watched, setWatched] = useState([]);
   const [created, setCreated] = useState([]);
+  const { currentUser } = useAuthentication();
+
+  const getData = async () => {
+    try {
+      const newData = await getUserByUid(currentUser.uid);
+      setCreated(newData.created);
+      setWatched(newData.watched);
+      setRecently(newData.learned[newData.learned.length - 1]);
+    } catch {
+      await createUser({
+        uid: currentUser.uid,
+        displayName: currentUser.displayName,
+        email: currentUser.email,
+        phoneNumber: currentUser.phoneNumber,
+        photoURL: currentUser.photoURL,
+        created: [],
+        watched: [],
+        learned: [],
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+  const seeAll = (tab) => {
+    history.push(`/term?tab=${tab}`);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div>
       {loading ? (
