@@ -27,6 +27,63 @@ const Exam = () => {
   const [myAns, setMyAns] = useState([]);
   const { currentUser } = useAuthentication();
   const [timeLeft, setTimeLeft] = useState(-1);
+  const id = new URLSearchParams(window.location.search).get("id");
+  const user = {
+    uid: currentUser.uid,
+    displayName: currentUser.displayName,
+    email: currentUser.email,
+    phoneNumber: currentUser.phoneNumber,
+    photoURL: currentUser.photoURL,
+  };
+
+  const initQuest = async () => {
+    try {
+      const data = await getFlashcardById(id, user);
+      const cards = [...data.cards];
+      let newQuest = [];
+      for (let i = 0; i < cards.length; i++) {
+        const answers = createAnswers([...cards], i);
+        newQuest.push({
+          question: cards[i].vocabulary,
+          answers: answers,
+          right: answers.indexOf(cards[i].meaning),
+        });
+      }
+      setTimeLeft(600);
+      setMyAns(Array(newQuest.length).fill(-1));
+      setQuest(newQuest);
+    } catch {
+      setIsError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const createAnswers = (array, index) => {
+    let ans = [];
+    ans.push(array[index].meaning);
+    array.splice(index, 1);
+    for (let i = 0; i < (array.length < 3 ? array.length : 3); i++) {
+      const rand = Math.floor(Math.random() * array.length);
+      ans.push(array[rand].meaning);
+      array.splice(rand, 1);
+    }
+    return shuffle(ans);
+  };
+
+  const shuffle = (array) => {
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  };
 
 
   const submit = () => {
