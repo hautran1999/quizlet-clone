@@ -71,6 +71,23 @@ const Edit = () => {
   useEffect(() => {
     getData();
   }, []);
+  const handleEditFlashcards = async () => {
+    if (!_.isEmpty(listFlashcard)) {
+      const update = {
+        title: title,
+        description: description,
+        cards: listFlashcard,
+      };
+      try {
+        await editFlashcard(id, update);
+        history.push("/home");
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert("Bộ thể không được để trống!");
+    }
+  };
 
   return (
     <div>
