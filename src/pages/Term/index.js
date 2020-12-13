@@ -42,7 +42,18 @@ const Term = () => {
 
  
 
+  const hiddenFlashcard = async (id) => {
+    setLoading(true);
+    await hiddenFlashcardById(user, id);
+    await getData();
+  };
 
+  const deleteFlashcard = async (id) => {
+    setLoading(true);
+    await deleteFlashcardById(id);
+    await deleteCreatedById(user, id);
+    await getData();
+  };
 
   return (
     <div>
