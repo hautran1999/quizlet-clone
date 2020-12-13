@@ -71,7 +71,56 @@ const Home = () => {
         </div>
       ) : (
         <div style={{ margin: ".5vw" }}>
-          
+          {!_.isEmpty(recently) && (
+            <Paper style={{ padding: "2vw", margin: "2.5vw 0" }}>
+              <Grid container>
+                <Grid
+                  item
+                  md={3}
+                  style={{
+                    alignItems: "center",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Progress
+                    type="circle"
+                    width={100}
+                    percent={Math.round(
+                      (recently.studied.length * 100) / recently.total
+                    )}
+                  />
+                </Grid>
+                <Grid item md={9}>
+                  <div className="NextActionBase-textWrapper">
+                    <div className="NextActionBase-header">
+                      {recently.title}
+                    </div>
+                    <div className="NextActionBase-subheader">
+                      Khởi đầu rất tốt! Hãy tiếp tục phát huy với chế độ Học
+                      nhé.
+                    </div>
+                    <Button
+                      component={Link}
+                      to={`/study?id=${recently.id}`}
+                      aria-label="Tiếp tục Học"
+                      variant="contained"
+                      className="UIButton"
+                      type="button"
+                      style={{ backgroundColor: "#3ccfcf" }}
+                    >
+                      <span
+                        className="UIButton-wrapper"
+                        style={{ color: "#fff" }}
+                      >
+                        Tiếp tục Học
+                      </span>
+                    </Button>
+                  </div>
+                </Grid>
+              </Grid>
+            </Paper>
+          )}
           {!_.isEmpty(watched) && (
             <div>
               <div style={{ display: "flex" }}>
