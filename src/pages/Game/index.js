@@ -18,7 +18,48 @@ const Game = () => {
   const [selectFirst, setSelectFirst] = useState();
   const [selectSecond, setSelectSecond] = useState();
   const { currentUser } = useAuthentication();
-  
+  const user = {
+    uid: currentUser.uid,
+    displayName: currentUser.displayName,
+    email: currentUser.email,
+    phoneNumber: currentUser.phoneNumber,
+    photoURL: currentUser.photoURL,
+  };
+  const id = new URLSearchParams(window.location.search).get("id");
+  const initGame = async () => {
+    try {
+      let newData = await getFlashcardById(id, user);
+      let cards = newData.cards;
+      let gameData = [];
+      const n = cards.length < 6 ? cards.length : 6;
+      for (let i = 0; i < n; i++) {
+        const rand = Math.floor(Math.random() * cards.length);
+        gameData.push({ text: cards[rand].vocabulary, status: "none", id: i });
+        gameData.push({ text: cards[rand].meaning, status: "none", id: i });
+        cards.splice(rand, 1);
+      }
+      setData(shuffle(gameData));
+    } catch {
+      setIsError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const shuffle = (array) => {
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  };
+
   const handleClick = async (key) => {
     if (selectFirst !== undefined && selectFirst !== key) {
       setSelectSecond(key);
