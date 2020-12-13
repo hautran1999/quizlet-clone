@@ -1,5 +1,11 @@
 import { app } from "../services/firebase";
-import { getUserByUid, updateUser } from "./users";
+import {
+  getUserByUid,
+  updateUser,
+  getUsers,
+  hiddenFlashcardById,
+  updateFlashcardUser,
+} from "./users";
 
 const flashcardsRef = app.firestore().collection("flashcards");
 
@@ -55,6 +61,18 @@ export const getFlashcardById = async (id, currentUser) => {
   return data;
 };
 
-export const updateFlashcard = async (data) => {
-  await flashcardsRef.doc(data.id).update(data);
+export const editFlashcard = async (id, data) => {
+  await flashcardsRef.doc(id).update(data);
+  const users = await getUsers();
+  for (const user of users) {
+    await updateFlashcardUser(user, id, data);
+  }
+};
+
+export const deleteFlashcardById = async (id) => {
+  await flashcardsRef.doc(id).delete();
+  const users = await getUsers();
+  for (const user of users) {
+    await hiddenFlashcardById(user, id);
+  }
 };
