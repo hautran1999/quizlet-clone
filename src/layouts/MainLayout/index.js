@@ -1,12 +1,14 @@
 import React from "react";
 import Header from "../Header";
-import { Container, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 const MainLayout = (props) => {
   return (
-    <Grid>
+    <Grid
+      style={{ height: "auto", minHeight: "100vh", backgroundColor: "#f6f7fb" }}
+    >
       <Header />
-      <Container fixed>{props.children}</Container>
+      <div>{props.children}</div>
     </Grid>
   );
 };
