@@ -14,6 +14,20 @@ const Progress = () => {
   const [learned, setLearned] = useState({});
   const { currentUser } = useAuthentication();
 
+  const getData = async () => {
+    try {
+      const newData = await getUserByUid(currentUser.uid);
+      setLearned(newData.learned);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div>
       {loading ? (
