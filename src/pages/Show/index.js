@@ -16,7 +16,27 @@ import "./Show.scss";
 const Show = () => {
   const [data, setData] = useState([]);
   const [index, setIndex] = useState(0);
-  
+  const [isError, setIsError] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const { currentUser } = useAuthentication();
+  const user = {
+    uid: currentUser.uid,
+    displayName: currentUser.displayName,
+    email: currentUser.email,
+    phoneNumber: currentUser.phoneNumber,
+    photoURL: currentUser.photoURL,
+  };
+  const id = new URLSearchParams(window.location.search).get("id");
+  const getData = async () => {
+    try {
+      const newData = await getFlashcardById(id, user);
+      setData(newData);
+    } catch (error) {
+      setIsError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
     getData();
   }, []);
