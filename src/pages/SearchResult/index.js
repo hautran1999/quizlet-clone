@@ -31,6 +31,38 @@ const SearchResult = () => {
     history.push("/show?" + query);
   };
 
+  const getData = async () => {
+    try {
+      let newData = await getFlashcards();
+      if (searchContent) {
+        newData = newData.filter((record) => {
+          for (let column of searchableColumns) {
+            if (isMatchedSearch(record[column], searchContent)) {
+              return true;
+            }
+          }
+          return false;
+        });
+      }
+      setData(newData);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const isMatchedSearch = (string, searchKey) => {
+    return String(string)
+      .trim()
+      .toLowerCase()
+      .includes(searchKey.trim().toLowerCase());
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div>
       {loading ? (
