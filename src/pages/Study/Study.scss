@@ -1,0 +1,190 @@
+.study {
+  .study-incorrect-header {
+    font-weight: 700;
+    font-size: 1.875rem;
+    line-height: 1.266666666666667;
+    color: #ff725b;
+  }
+  .study-incorrect-vocabulary {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.0625rem;
+    line-height: 1.333333333333333;
+    color: #939bb4;
+  }
+  .study-incorrect-meaning {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.0625rem;
+    line-height: 1.333333333333333;
+    color: #23b26d;
+  }
+  .study-incorrect-answer {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.0625rem;
+    line-height: 1.333333333333333;
+    color: #ff725b;
+  }
+  .study-incorrect-content {
+    margin: 0.5vw 0;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.625;
+  }
+  .study-incorrect-button {
+    background-color: #3ccfcf;
+    color: white;
+    font-weight: bold;
+    text-transform: none;
+  }
+  .study-sidebar-header {
+    margin-top: 0.5rem;
+    font-weight: bold;
+  }
+  .study-root {
+    margin: 2.5vw;
+    padding: 1.25vw;
+  }
+  .study-button {
+    font-weight: bold;
+    text-transform: none;
+    box-shadow: none;
+  }
+  .study-question-meta {
+    margin-left: 10px;
+    display: inline;
+  }
+  .study-footer {
+    margin-top: 40px;
+  }
+  .MultipleChoiceQuestionPrompt-options {
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    width: 100%;
+    z-index: 0;
+  }
+  @media screen and (max-width: 64em) {
+    .MultipleChoiceQuestionPrompt-termOptions {
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+    }
+    .MultipleChoiceQuestionPrompt-termOption {
+      width: 100%;
+      // margin-left: 0 !important;
+    }
+    .MultipleChoiceQuestionPrompt-termOption .FormattedTextWithImage {
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      display: -webkit-flex;
+      display: flex;
+    }
+  }
+  .MultipleChoiceQuestionPrompt-termOptions {
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+  }
+  .MultipleChoiceQuestionPrompt-termOption {
+    border: 0.125rem solid #3ccfcf;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    position: relative;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.625;
+    transition: none 0.12s cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition-property: border-color;
+    width: 25%;
+    margin: 2vw 1vw;
+  }
+  .MultipleChoiceQuestionPrompt-keyboardHint {
+    left: -2px;
+    position: absolute;
+    top: -2px;
+  }
+  .MultipleChoiceQuestionPrompt-termOption {
+    border: 0.125rem solid #3ccfcf;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    position: relative;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.625;
+    transition: none 0.12s cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition-property: border-color;
+    width: 25%;
+  }
+  .MultipleChoiceQuestionPrompt-termOption {
+    border: 0.125rem solid #3ccfcf;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    position: relative;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.625;
+    transition: none 0.12s cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition-property: border-color;
+    width: 25%;
+  }
+  .FormattedTextWithImage {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  .UIKeyboardHint.is-white {
+    background-color: #fff;
+  }
+  @media screen and (max-width: 48em) {
+    .UIKeyboardHint {
+      background-color: #fff;
+    }
+  }
+  .UIKeyboardHint {
+    background-color: #13141b;
+    height: 1.5rem;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: all 0.12s cubic-bezier(0.47, 0, 0.745, 0.715);
+    width: 0.75rem;
+  }
+  .UIKeyboardHint-text.is-white {
+    background-color: #fff;
+    line-height: 1;
+  }
+  @media screen and (max-width: 48em) {
+    .UIKeyboardHint-text {
+      background-color: #fff;
+    }
+  }
+  .UIKeyboardHint-text {
+    background-color: #13141b;
+    border-radius: 50%;
+    border: 0.125rem solid #3ccfcf;
+    color: #3ccfcf;
+    line-height: 1.2;
+    font-size: 0.875rem;
+    height: 1.25rem;
+    left: -0.5rem;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 1.25rem;
+    font-weight: bold;
+  }
+
+  .study-number {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+}
