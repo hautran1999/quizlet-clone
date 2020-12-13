@@ -53,7 +53,24 @@ const Edit = () => {
     phoneNumber: currentUser.phoneNumber,
     photoURL: currentUser.photoURL,
   };
-  
+  const getData = async () => {
+    try {
+      const data = await getFlashcardById(id, user);
+      if (data.author.uid === user.uid) {
+        setTitle(data.title);
+        setDescription(data.description);
+        setListFlashcard(data.cards);
+      } else setIsError(true);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div>
