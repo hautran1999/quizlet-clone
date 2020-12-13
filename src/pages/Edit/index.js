@@ -53,7 +53,41 @@ const Edit = () => {
     phoneNumber: currentUser.phoneNumber,
     photoURL: currentUser.photoURL,
   };
-  
+  const getData = async () => {
+    try {
+      const data = await getFlashcardById(id, user);
+      if (data.author.uid === user.uid) {
+        setTitle(data.title);
+        setDescription(data.description);
+        setListFlashcard(data.cards);
+      } else setIsError(true);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+  const handleEditFlashcards = async () => {
+    if (!_.isEmpty(listFlashcard)) {
+      const update = {
+        title: title,
+        description: description,
+        cards: listFlashcard,
+      };
+      try {
+        await editFlashcard(id, update);
+        history.push("/home");
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert("Bộ thể không được để trống!");
+    }
+  };
 
   return (
     <div>
@@ -69,6 +103,9 @@ const Edit = () => {
         </div>
       ) : isError ? (
         <Grid style={{ textAlign: "center", margin: "2.5vw 0vw" }}>
+          <Typography variant="h4" style={{ fontWeight: "bold" }}>
+            Rất tiếc, Bạn không được phép sửa bộ thẻ này !
+          </Typography>
         </Grid>
       ) : (
         <Grid className="edit-container">
